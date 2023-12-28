@@ -28,7 +28,7 @@ export default function CommunityCard(props: Props) {
   }, [props.community.imgUrl]);
 
   return (
-    <Card variant="outlined" sx={{ maxWidth: 600 }}>
+    <Card sx={{ maxWidth: 600 }}>
       <CardMedia
         sx={{ height: 300 }}
         image={

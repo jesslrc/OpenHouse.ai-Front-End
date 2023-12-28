@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
-import { Community } from "../CommunityList";
 import { CardContent, CardMedia, Typography } from "@mui/material";
+import { Community } from "../CommunityList/community";
 
 type Props = {
   community: Community;
 };
+
+const CADDollar = new Intl.NumberFormat("en-CA", {
+  style: "currency",
+  currency: "CAD",
+});
+
 export default function CommunityCard(props: Props) {
   const [imageValid, setImageValid] = useState(true);
 
@@ -22,9 +28,9 @@ export default function CommunityCard(props: Props) {
   }, [props.community.imgUrl]);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card variant="outlined" sx={{ maxWidth: 600 }}>
       <CardMedia
-        sx={{ height: 220 }} //TODO introduce responsiveness
+        sx={{ height: 300 }}
         image={
           imageValid
             ? props.community.imgUrl
@@ -40,7 +46,7 @@ export default function CommunityCard(props: Props) {
       <Typography color="text.secondary">
         Average Price:{" "}
         {props.community.averagePrice
-          ? "$" + props.community.averagePrice.toFixed(2)
+          ? CADDollar.format(props.community.averagePrice)
           : "N/A"}
       </Typography>
     </Card>
